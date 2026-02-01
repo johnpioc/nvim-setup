@@ -4,6 +4,7 @@ return {
 		opts = {
 			ensure_installed = {
 				"pyright",
+                "tailwindcss-language-server"
 			},
 		},
 		config = function()
@@ -19,6 +20,10 @@ return {
 					"clangd",
 					"pyright",
 					"texlab",
+                    "vtsls",
+                    "emmet_ls",
+                    "tailwindcss",
+                    "prismals"
 				},
 			})
 		end,
@@ -48,11 +53,28 @@ return {
             vim.lsp.config("texlab", {
                 capabilities = capabilities
             })
+            vim.lsp.config("vtsls", {
+                capabilities = capabilities,
+            })
+
+            vim.lsp.config("emmet_ls", {
+                filetypes = { 'html', 'css', 'javascriptreact', 'typescriptreact' }
+            })
+
+            vim.lsp.config("tailwindcss", {
+                filetypes = { 'html', 'javascriptreact', 'react', 'typescriptreact' }
+            })
+
+            vim.lsp.config('prismals', vim.lsp.config.prismals)
 
 			vim.lsp.enable("lua_ls")
 			vim.lsp.enable("clangd")
 			vim.lsp.enable("pyright")
             vim.lsp.enable("texlab")
+            vim.lsp.enable("ts_ls")
+            vim.lsp.enable("emmet_ls")
+            vim.lsp.enable("tailwindcss")
+            vim.lsp.enable("prismals")
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
