@@ -52,7 +52,7 @@ return {
                     "--clang-tidy",
                     "--header-insertion=iwyu",
                     "--completion-style=detailed",
-                    "--function-arg-placeholders",
+                    "--function-arg-placeholders=1",
                 },
                 filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
             })
