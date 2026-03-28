@@ -11,7 +11,6 @@ return {
 				"-file-line-error",
 				"-synctex=1",
 				"-interaction=nonstopmode",
-				-- >>> The important line to add is here <<<
 				"-shell-escape",
 			},
 		}
