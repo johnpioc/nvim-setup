@@ -11,3 +11,4 @@ vim.opt.smartindent = true
 vim.opt.list = true
 
 vim.opt.number = true
+vim.opt.signcolumn = "no"
