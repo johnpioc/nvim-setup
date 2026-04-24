@@ -12,6 +12,9 @@ return {
 					filetypes = { "c", "cpp", "cuda" },
 					extra_args = { "--style=file", "--fallback-style=Google" },
 				}),
+				null_ls.builtins.formatting.prettier.with({
+					filetypes = { "html", "css", "scss", "less", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+				}),
 			},
 		})
 		vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
@@ -23,6 +26,11 @@ return {
 
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			pattern = { "*.tf", "*.tfvars" },
+			callback = function() vim.lsp.buf.format({ async = false }) end,
+		})
+
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			pattern = { "*.html", "*.css", "*.scss", "*.less", "*.js", "*.jsx", "*.ts", "*.tsx" },
 			callback = function() vim.lsp.buf.format({ async = false }) end,
 		})
 	end,

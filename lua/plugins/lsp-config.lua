@@ -8,7 +8,7 @@ return {
         config = function()
             require("mason").setup()
             require("mason-lspconfig").setup({
-                ensure_installed = { "pyright", "clangd", "lua_ls", "texlab", "terraform-ls" },
+                ensure_installed = { "pyright", "clangd", "lua_ls", "texlab", "terraformls", "html", "cssls", "ts_ls" },
                 automatic_installation = true,
             })
 
@@ -69,6 +69,24 @@ return {
                         telemetry = { enable = false },
                     },
                 },
+            })
+
+            vim.lsp.config('html', {
+                capabilities = capabilities,
+                on_attach = on_attach,
+                filetypes = { "html" },
+            })
+
+            vim.lsp.config('cssls', {
+                capabilities = capabilities,
+                on_attach = on_attach,
+                filetypes = { "css", "scss", "less" },
+            })
+
+            vim.lsp.config('ts_ls', {
+                capabilities = capabilities,
+                on_attach = on_attach,
+                filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
             })
 
             vim.lsp.config('terraformls', {
