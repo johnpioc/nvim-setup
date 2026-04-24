@@ -8,7 +8,7 @@ return {
         config = function()
             require("mason").setup()
             require("mason-lspconfig").setup({
-                ensure_installed = { "pyright", "clangd", "lua_ls", "texlab" },
+                ensure_installed = { "pyright", "clangd", "lua_ls", "texlab", "terraform-ls" },
                 automatic_installation = true,
             })
 
@@ -69,6 +69,12 @@ return {
                         telemetry = { enable = false },
                     },
                 },
+            })
+
+            vim.lsp.config('terraformls', {
+                capabilities = capabilities,
+                on_attach = on_attach,
+                filetypes = { "terraform", "terraform-vars", "hcl" },
             })
 
             vim.lsp.config('texlab', {
